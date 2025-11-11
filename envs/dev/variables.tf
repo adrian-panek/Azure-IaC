@@ -1,0 +1,50 @@
+variable "resource_group_name" {
+  type = string
+}
+
+variable "adls_name" {
+  type = string
+}
+
+variable "location" {
+  type    = string
+  default = "westeurope"
+}
+
+variable "account_tier" {
+  type = string
+}
+
+variable "account_replication_type" {
+  type = string
+}
+
+variable "access_tier" {
+  type = string
+}
+
+variable "subscription_id" {
+  type      = string
+  sensitive = true
+}
+
+variable "emails" {
+  type    = list(string)
+  default = []
+}
+
+variable "sa_vnet_name" {
+  type = string
+}
+
+variable "address_space" {
+    type = list(string)
+}
+
+variable "subnet1_name" {
+    type = string
+}
+
+variable "address_prefixes" {
+    type = list(string)
+}
