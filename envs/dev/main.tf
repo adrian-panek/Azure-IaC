@@ -1,3 +1,17 @@
+data "http" "deployer_ip" {
+  url = "https://api.ipify.org?format=json"
+  
+  request_headers = {
+    Accept = "application/json"
+  }
+}
+
+locals {
+  deployer_public_ip = jsondecode(data.http.deployer_ip.response_body).ip
+  ip_rules = [format("%s/30", local.deployer_public_ip)]
+
+}
+
 module "rg" {
   source   = "../../modules/rg"
   name     = var.resource_group_name
@@ -12,6 +26,8 @@ module "adls" {
   account_tier             = var.account_tier
   account_replication_type = var.account_replication_type
   access_tier              = var.access_tier
+  subnet_ids               = [module.subnet.id]
+  ip_rules                 = local.ip_rules
 }
 
 module "sa_vnet" {
@@ -28,6 +44,7 @@ module "subnet" {
   address_prefixes     = var.address_prefixes
   resource_group_name  = module.rg.name
   virtual_network_name = module.sa_vnet.sa_vnet_name
+  service_endpoints    = var.service_endpoints
 }
 
 module "action_group" {

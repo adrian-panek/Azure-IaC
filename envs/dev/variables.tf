@@ -48,3 +48,12 @@ variable "subnet1_name" {
 variable "address_prefixes" {
   type = list(string)
 }
+
+variable "default_action" {
+  type    = string
+  default = "Deny"
+}
+
+variable "service_endpoints" {
+  type = list(string)
+}
