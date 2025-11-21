@@ -1,6 +1,6 @@
 resource "azurerm_consumption_budget_subscription" "spending_alert" {
   name            = var.name
-  subscription_id = var.subscription_id
+  subscription_id = "/subscriptions/${var.subscription_id}"
 
   amount     = var.budget_amount
   time_grain = "Monthly"
