@@ -1,3 +1,6 @@
+subscription_id = "dummy-value" #dummy values to avoid pipeline failure
+emails          = ["dummy-value"] #dummy values to avoid pipeline failure
+
 resource_group_name = "apanekrg001"
 location            = "westeurope"
 
