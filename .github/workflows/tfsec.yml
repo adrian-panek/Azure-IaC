@@ -25,7 +25,6 @@ jobs:
           output: 'trivy-results.sarif'
           exit-code: '1'
           severity: 'LOW,MEDIUM,CRITICAL,HIGH'
-          args: "--tf-vars envs/dev/terraform.tfvars"
 
 
       - name: Upload Trivy scan results to GitHub Security tab
