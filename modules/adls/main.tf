@@ -12,3 +12,9 @@ resource "azurerm_storage_account" "devstorageacc001" {
     ip_rules                   = var.ip_rules
   }
 }
+
+resource "azurerm_storage_account_static_website" "static_website" {
+  storage_account_id = azurerm_storage_account.devstorageacc001.id
+  index_document     = var.static_website_index_document
+  error_404_document = var.static_website_error_404_document
+}

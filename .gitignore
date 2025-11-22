@@ -1,2 +1,3 @@
 .terraform*
 terraform.local.tfvars
+.DS_Store

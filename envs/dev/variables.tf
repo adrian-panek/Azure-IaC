@@ -8,7 +8,7 @@ variable "adls_name" {
 
 variable "location" {
   type    = string
-  default = "westeurope"
+  default = null
 }
 
 variable "account_tier" {
@@ -49,11 +49,11 @@ variable "address_prefixes" {
   type = list(string)
 }
 
-variable "default_action" {
-  type    = string
-  default = "Deny"
-}
-
 variable "service_endpoints" {
   type = list(string)
+}
+
+variable "content_source" {
+  type    = string
+  default = null
 }
