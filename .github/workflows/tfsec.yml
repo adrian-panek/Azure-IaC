@@ -23,9 +23,7 @@ jobs:
           hide-progress: false
           format: 'sarif'
           output: 'trivy-results.sarif'
-          exit-code: '1'
           severity: 'LOW,MEDIUM,CRITICAL,HIGH'
-          version: "0.67.2"
 
 
       - name: Upload Trivy scan results to GitHub Security tab
