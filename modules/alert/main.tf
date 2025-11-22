@@ -1,5 +1,5 @@
 resource "azurerm_consumption_budget_subscription" "spending_alert" {
-  name            = var.name
+  name            = var.monthly_budget_name
   subscription_id = "/subscriptions/${var.subscription_id}"
 
   amount     = var.budget_amount
@@ -11,7 +11,7 @@ resource "azurerm_consumption_budget_subscription" "spending_alert" {
 
   notification {
     enabled        = true
-    threshold      = 50
+    threshold      = var.budget_threshold
     operator       = "GreaterThan"
     contact_groups = var.action_group_ids
     contact_emails = var.notification_emails

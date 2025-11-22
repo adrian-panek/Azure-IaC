@@ -8,7 +8,11 @@ data "http" "deployer_ip" {
 
 locals {
   deployer_public_ip = jsondecode(data.http.deployer_ip.response_body).ip
+<<<<<<< HEAD
   ip_rules = [format("%s/30", local.deployer_public_ip)]
+=======
+  ip_rules           = concat([format("%s/30", local.deployer_public_ip)], ["0.0.0.0/0"])
+>>>>>>> f123d0a (added public access to static websites)
 
 }
 
@@ -51,13 +55,27 @@ module "action_group" {
   source              = "../../modules/action_group"
   resource_group_name = module.rg.name
   email_receivers     = var.emails
-  action_group_name   = "budget-alerts"
+  action_group_name   = var.action_group_name
 }
 
 module "alert" {
   source              = "../../modules/alert"
   subscription_id     = var.subscription_id
-  name                = "monthly-budget"
+  monthly_budget_name = var.monthly_budget_name
   action_group_ids    = [module.action_group.action_group_id]
   notification_emails = var.emails
 }
+<<<<<<< HEAD
+=======
+
+module "webpage" {
+  source                 = "../../modules/static_webpage"
+  storage_account_name   = module.adls.name
+  storage_account_id     = module.adls.id
+  name                   = local.static_website_defaults.index_document
+  storage_container_name = local.storage_defaults.container_name
+  type                   = local.storage_defaults.blob_type
+  content_type           = local.storage_defaults.content_type
+  content_source         = local.static_website_defaults.index_document
+}
+>>>>>>> f123d0a (added public access to static websites)

@@ -54,6 +54,22 @@ variable "default_action" {
   default = "Deny"
 }
 
+<<<<<<< HEAD
 variable "service_endpoints" {
   type = list(string)
+=======
+variable "content_source" {
+  type    = string
+  default = null
+}
+
+variable "monthly_budget_name" {
+  type    = string
+  default = "monthly-budget"
+}
+
+variable "action_group_name" {
+  type    = string
+  default = "budget-alerts"
+>>>>>>> f123d0a (added public access to static websites)
 }
