@@ -1,6 +1,6 @@
 data "http" "deployer_ip" {
   url = "https://api.ipify.org?format=json"
-  
+
   request_headers = {
     Accept = "application/json"
   }
@@ -8,32 +8,25 @@ data "http" "deployer_ip" {
 
 locals {
   deployer_public_ip = jsondecode(data.http.deployer_ip.response_body).ip
-<<<<<<< HEAD
-  ip_rules = [format("%s/30", local.deployer_public_ip)]
-=======
-  ip_rules           = concat([format("%s/30", local.deployer_public_ip)], ["0.0.0.0/0"])
->>>>>>> f123d0a (added public access to static websites)
+  ip_rules  = concat([format("%s/30", local.deployer_public_ip)], ["0.0.0.0/0"])
 
+  default_location = "westeurope"
+
+  static_website_defaults = {
+    index_document = "index.html"
+    error_document = "index.html"
+  }
+
+  storage_defaults = {
+    container_name = "$web"
+    blob_type      = "Block"
+    content_type   = "text/html"
+  }
+
+  location = var.location != null ? var.location : local.default_location
 }
 
 module "rg" {
-<<<<<<< HEAD
-  source   = "../../modules/rg"
-  name     = var.resource_group_name
-  location = var.location
-}
-
-module "adls" {
-  source                   = "../../modules/adls"
-  name                     = var.adls_name
-  resource_group_name      = module.rg.name
-  location                 = module.rg.location
-  account_tier             = var.account_tier
-  account_replication_type = var.account_replication_type
-  access_tier              = var.access_tier
-  subnet_ids               = [module.subnet.id]
-  ip_rules                 = local.ip_rules
-=======
   source              = "../../modules/rg"
   resource_group_name = var.resource_group_name
   location            = local.location
@@ -51,7 +44,6 @@ module "adls" {
   ip_rules                          = local.ip_rules
   static_website_index_document     = local.static_website_defaults.index_document
   static_website_error_404_document = local.static_website_defaults.error_document
->>>>>>> d0ed22a (added static page to readme file)
 }
 
 module "sa_vnet" {
@@ -85,8 +77,6 @@ module "alert" {
   action_group_ids    = [module.action_group.action_group_id]
   notification_emails = var.emails
 }
-<<<<<<< HEAD
-=======
 
 module "webpage" {
   source                 = "../../modules/static_webpage"
@@ -98,4 +88,4 @@ module "webpage" {
   content_type           = local.storage_defaults.content_type
   content_source         = local.static_website_defaults.index_document
 }
->>>>>>> f123d0a (added public access to static websites)
+
