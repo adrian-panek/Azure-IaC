@@ -17,6 +17,7 @@ locals {
 }
 
 module "rg" {
+<<<<<<< HEAD
   source   = "../../modules/rg"
   name     = var.resource_group_name
   location = var.location
@@ -32,6 +33,25 @@ module "adls" {
   access_tier              = var.access_tier
   subnet_ids               = [module.subnet.id]
   ip_rules                 = local.ip_rules
+=======
+  source              = "../../modules/rg"
+  resource_group_name = var.resource_group_name
+  location            = local.location
+}
+
+module "adls" {
+  source                            = "../../modules/adls"
+  adls_name                         = var.adls_name
+  resource_group_name               = module.rg.name
+  location                          = module.rg.location
+  account_tier                      = var.account_tier
+  account_replication_type          = var.account_replication_type
+  access_tier                       = var.access_tier
+  subnet_ids                        = [module.subnet.id]
+  ip_rules                          = local.ip_rules
+  static_website_index_document     = local.static_website_defaults.index_document
+  static_website_error_404_document = local.static_website_defaults.error_document
+>>>>>>> d0ed22a (added static page to readme file)
 }
 
 module "sa_vnet" {
@@ -44,7 +64,7 @@ module "sa_vnet" {
 
 module "subnet" {
   source               = "../../modules/subnet"
-  name                 = var.subnet1_name
+  sa_subnet_name       = var.sa_subnet_name
   address_prefixes     = var.address_prefixes
   resource_group_name  = module.rg.name
   virtual_network_name = module.sa_vnet.sa_vnet_name

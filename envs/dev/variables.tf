@@ -41,7 +41,7 @@ variable "address_space" {
   type = list(string)
 }
 
-variable "subnet1_name" {
+variable "sa_subnet_name" {
   type = string
 }
 
