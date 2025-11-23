@@ -1,8 +1,3 @@
 .terraform*
 terraform.local.tfvars
-<<<<<<< HEAD
-*/.DS_Store
-**/.DS_Store
-=======
->>>>>>> d0ed22a78feacea2119cbdebec994e985a602393
 .DS_Store
