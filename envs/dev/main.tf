@@ -8,7 +8,7 @@ data "http" "deployer_ip" {
 
 locals {
   deployer_public_ip = jsondecode(data.http.deployer_ip.response_body).ip
-  ip_rules  = concat([format("%s/30", local.deployer_public_ip)], ["0.0.0.0/0"])
+  ip_rules           = concat([format("%s/30", local.deployer_public_ip)], ["0.0.0.0/0"])
 
   default_location = "westeurope"
 
@@ -88,4 +88,3 @@ module "webpage" {
   content_type           = local.storage_defaults.content_type
   content_source         = local.static_website_defaults.index_document
 }
-
