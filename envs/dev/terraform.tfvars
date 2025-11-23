@@ -9,7 +9,7 @@ access_tier              = "Cold"
 sa_vnet_name  = "apanekvnet001"
 address_space = ["10.0.0.0/20"]
 
-subnet1_name     = "subnet1"
+sa_subnet_name   = "subnet1"
 address_prefixes = ["10.0.1.0/24"]
 
 service_endpoints = ["Microsoft.Storage"]

@@ -102,6 +102,10 @@ Configures email receivers for monitoring alerts and notifications.
 ### Budget Alert (`modules/alert`)
 Sets up consumption budget alerts to monitor subscription spending with email notifications at 50% threshold.
 
+### My page (`modules/static_webpage`)
+Statically hosted webpage using Storage Account with basic information about repository author.
+
+
 ## 🔒 Security
 
 - Storage accounts are configured with network rules (default: Deny)

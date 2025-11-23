@@ -27,14 +27,14 @@ locals {
 }
 
 module "rg" {
-  source   = "../../modules/rg"
-  name     = var.resource_group_name
-  location = local.location
+  source              = "../../modules/rg"
+  resource_group_name = var.resource_group_name
+  location            = local.location
 }
 
 module "adls" {
   source                            = "../../modules/adls"
-  name                              = var.adls_name
+  adls_name                         = var.adls_name
   resource_group_name               = module.rg.name
   location                          = module.rg.location
   account_tier                      = var.account_tier
@@ -56,7 +56,7 @@ module "sa_vnet" {
 
 module "subnet" {
   source               = "../../modules/subnet"
-  name                 = var.subnet1_name
+  sa_subnet_name       = var.sa_subnet_name
   address_prefixes     = var.address_prefixes
   resource_group_name  = module.rg.name
   virtual_network_name = module.sa_vnet.sa_vnet_name
