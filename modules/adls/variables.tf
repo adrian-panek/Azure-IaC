@@ -1,4 +1,4 @@
-variable "name" {
+variable "adls_name" {
   type = string
 }
 

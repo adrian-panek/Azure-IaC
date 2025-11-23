@@ -1,5 +1,5 @@
 resource "azurerm_storage_account" "devstorageacc001" {
-  name                     = var.name
+  name                     = var.adls_name
   resource_group_name      = var.resource_group_name
   location                 = var.location
   account_tier             = var.account_tier

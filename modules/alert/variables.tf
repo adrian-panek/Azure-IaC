@@ -24,6 +24,6 @@ variable "notification_emails" {
 }
 
 variable "budget_threshold" {
-  type        = number
-  default     = 50
+  type    = number
+  default = 50
 }

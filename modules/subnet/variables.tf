@@ -1,4 +1,4 @@
-variable "name" {
+variable "sa_subnet_name" {
   type = string
 }
 
