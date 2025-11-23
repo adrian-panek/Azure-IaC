@@ -57,3 +57,13 @@ variable "content_source" {
   type    = string
   default = null
 }
+
+variable "monthly_budget_name" {
+  type    = string
+  default = "monthly-budget"
+}
+
+variable "action_group_name" {
+  type    = string
+  default = "budget-alerts"
+}
