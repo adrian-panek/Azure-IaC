@@ -17,6 +17,7 @@ This repository contains Terraform modules and configurations for provisioning A
 - **Cost Monitoring**: Budget alerts with email notifications for subscription spending
 - **Modular Architecture**: Reusable Terraform modules for easy infrastructure composition
 - **Dynamic IP Detection**: Automatically detects deployer's public IP for secure access configuration
+- **Azure Front Door**: Enables HTTP/HTTPS access to statically hosted webpage
 
 ## 🚦 Running the Project
 
@@ -61,20 +62,7 @@ This repository contains Terraform modules and configurations for provisioning A
    ```
 
 ### Configuration
-
-Key variables to configure in `terraform.tfvars`:
-- `resource_group_name`: Name of the Azure resource group
-- `adls_name`: Name of the storage account (must be globally unique)
-- `location`: Azure region (default: "westeurope")
-- `account_tier`: Storage account tier (Standard/Premium)
-- `account_replication_type`: Replication type (LRS/GRS/ZRS)
-- `access_tier`: Access tier (Hot/Cool/Cold)
-- `sa_vnet_name`: Virtual network name
-- `address_space`: VNet address space (CIDR notation)
-- `subnet1_name`: Subnet name
-- `address_prefixes`: Subnet address prefixes
-- `service_endpoints`: List of service endpoints (e.g., ["Microsoft.Storage"])
-
+   
 Sensitive variables (set in `terraform.local.tfvars` or via environment variables):
 - `subscription_id`: Azure subscription ID
 - `emails`: List of email addresses for budget alerts
@@ -105,9 +93,10 @@ Sets up consumption budget alerts to monitor subscription spending with email no
 ### My page (`modules/static_webpage`)
 Statically hosted webpage using Storage Account with basic information about repository author.
 
+### Azure Front Door (`modules/front_door`)
+Provides global HTTP/HTTPS routing and access to the static webpage.
 
 ## 🔒 Security
-
 - Storage accounts are configured with network rules (default: Deny)
 - Access is restricted to specified subnets and IP addresses
 - Deployer's public IP is automatically detected and whitelisted

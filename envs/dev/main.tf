@@ -88,3 +88,16 @@ module "webpage" {
   content_type           = local.storage_defaults.content_type
   content_source         = local.static_website_defaults.index_document
 }
+
+module "front-door" {
+  source              = "../../modules/front_door"
+  profile_name        = var.profile_name
+  resource_group_name = module.rg.name
+  sku_name            = var.sku_name
+  origin_name         = var.origin_name
+  host_name           = module.adls.primary_web_host
+  origin_host_header  = module.adls.primary_web_host
+  route_name          = var.route_name
+  endpoint_name       = var.endpoint_name
+  storage_origin_name = var.storage_origin_name
+}

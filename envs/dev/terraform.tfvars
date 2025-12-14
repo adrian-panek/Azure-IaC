@@ -13,3 +13,10 @@ sa_subnet_name   = "subnet1"
 address_prefixes = ["10.0.1.0/24"]
 
 service_endpoints = ["Microsoft.Storage"]
+
+profile_name        = "fd-about-me"
+sku_name            = "Standard_AzureFrontDoor"
+endpoint_name       = "fd-endpoint"
+origin_name         = "storage-origin-group"
+route_name          = "static-route"
+storage_origin_name = "static-web-origin"
