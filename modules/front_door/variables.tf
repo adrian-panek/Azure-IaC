@@ -33,3 +33,11 @@ variable "endpoint_name" {
 variable "storage_origin_name" {
   type = string
 }
+
+variable "domain_host_name" {
+  type = string
+}
+
+variable "domain_custom_name" {
+  type = string
+}

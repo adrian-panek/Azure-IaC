@@ -67,27 +67,3 @@ variable "action_group_name" {
   type    = string
   default = "budget-alerts"
 }
-
-variable "profile_name" {
-  type = string
-}
-
-variable "sku_name" {
-  type = string
-}
-
-variable "origin_name" {
-  type = string
-}
-
-variable "endpoint_name" {
-  type = string
-}
-
-variable "route_name" {
-  type = string
-}
-
-variable "storage_origin_name" {
-  type = string
-}

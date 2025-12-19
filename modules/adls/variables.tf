@@ -36,13 +36,3 @@ variable "subnet_ids" {
 variable "ip_rules" {
   type = list(string)
 }
-
-variable "static_website_index_document" {
-  type    = string
-  default = "index.html"
-}
-
-variable "static_website_error_404_document" {
-  type    = string
-  default = "index.html"
-}

@@ -52,4 +52,23 @@ resource "azurerm_cdn_frontdoor_route" "route" {
 
   link_to_default_domain = true
   https_redirect_enabled = true
+
+  cdn_frontdoor_custom_domain_ids = [
+    azurerm_cdn_frontdoor_custom_domain.custom_domain.id
+  ]
+
+  depends_on = [
+    azurerm_cdn_frontdoor_custom_domain.custom_domain
+  ]
+
+}
+
+resource "azurerm_cdn_frontdoor_custom_domain" "custom_domain" {
+  name                     = var.domain_custom_name
+  cdn_frontdoor_profile_id = azurerm_cdn_frontdoor_profile.front_door.id
+  host_name                = var.domain_host_name
+
+  tls {
+    certificate_type = "ManagedCertificate"
+  }
 }
