@@ -3,7 +3,8 @@ name: Deploy my static webpage to GitHub Actions
 on:
   push:
     paths:
-      - modules/static_page/index.html
+      - modules/static_webpage/index.html
+      - modules/static_webpage/CV_APanek.pdf
 
   workflow_dispatch:
 
