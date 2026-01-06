@@ -17,7 +17,6 @@ This repository contains Terraform modules and configurations for provisioning A
 - **Cost Monitoring**: Budget alerts with email notifications for subscription spending
 - **Modular Architecture**: Reusable Terraform modules for easy infrastructure composition
 - **Dynamic IP Detection**: Automatically detects deployer's public IP for secure access configuration
-- **Azure Front Door**: Enables HTTP/HTTPS access to statically hosted webpage
 
 ## 🚦 Running the Project
 
@@ -91,10 +90,8 @@ Configures email receivers for monitoring alerts and notifications.
 Sets up consumption budget alerts to monitor subscription spending with email notifications at 50% threshold.
 
 ### My page (`modules/static_webpage`)
-Statically hosted webpage using Storage Account with basic information about repository author.
+Statically hosted webpage using GitHub Pages with basic information about repository author.
 
-### Azure Front Door (`modules/front_door`)
-Provides global HTTP/HTTPS routing and access to the static webpage.
 
 ## 🔒 Security
 - Storage accounts are configured with network rules (default: Deny)
