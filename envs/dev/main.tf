@@ -31,6 +31,7 @@ module "adls" {
   access_tier                       = var.access_tier
   subnet_ids                        = [module.subnet.id]
   ip_rules                          = local.ip_rules
+  bypass                            = var.bypass
 }
 
 module "sa_vnet" {

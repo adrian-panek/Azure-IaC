@@ -36,3 +36,8 @@ variable "subnet_ids" {
 variable "ip_rules" {
   type = list(string)
 }
+
+variable "bypass" {
+  type        = list(string)
+  default     = ["AzureServices"]
+}

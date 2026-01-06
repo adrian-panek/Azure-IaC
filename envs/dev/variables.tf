@@ -67,3 +67,8 @@ variable "action_group_name" {
   type    = string
   default = "budget-alerts"
 }
+
+variable "bypass" {
+  type        = list(string)
+  default     = ["AzureServices"]
+}

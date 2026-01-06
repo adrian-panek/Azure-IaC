@@ -8,8 +8,9 @@ resource "azurerm_storage_account" "devstorageacc001" {
 
 
   network_rules {
-    default_action             = var.default_action
-    virtual_network_subnet_ids = var.subnet_ids
-    ip_rules                   = var.ip_rules
+    default_action              = var.default_action
+    bypass                      = var.bypass
+    virtual_network_subnet_ids  = var.subnet_ids
+    ip_rules                    = var.ip_rules
   }
 }
